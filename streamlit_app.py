@@ -409,7 +409,7 @@ Generate content for {current_year}. Make it professional, impactful, and ATS-op
 def call_llm_api(prompt, api_key=None, api_provider="groq"):
     """Call various LLM APIs with enhanced error handling"""
     
-    DEFAULT_GROQ_KEY = "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"
+    DEFAULT_GROQ_KEY = "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"
 
     providers = {
         "groq": {
