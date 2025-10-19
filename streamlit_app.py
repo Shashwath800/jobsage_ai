@@ -4,7 +4,7 @@ import re
 from datetime import datetime
 import requests
 import os
-from openai import OpenAI
+
 st.set_page_config(
     page_title="AI Resume Builder",
     page_icon="📄",
