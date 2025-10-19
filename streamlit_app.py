@@ -4,7 +4,7 @@ import re
 from datetime import datetime
 import requests
 import os
-
+from openai import OpenAI
 st.set_page_config(
     page_title="AI Resume Builder",
     page_icon="📄",
@@ -642,13 +642,13 @@ BEGIN GENERATION NOW."""
 def call_llm_api(prompt, api_key=None, api_provider="groq"):
     """Call various LLM APIs with enhanced error handling"""
     
-    DEFAULT_GROQ_KEY = "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"
+    DEFAULT_OPENROUTER_KEY = "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"
 
     providers = {
-        "groq": {
-            "url": "https://api.groq.com/openai/v1/chat/completions",
-            "env_var": "GROQ_API_KEY",
-            "model": "openai/gpt-oss-20b",
+        "openrouter": {
+            "url": "https://openrouter.ai/api/v1/chat/completions",
+            "env_var": "OPENROUTER_API_KEYY",
+            "model": "openai/gpt-oss-120b",
             "max_tokens": 4096
         },
         "together": {
