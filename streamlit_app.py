@@ -676,7 +676,7 @@ def call_llm_api(prompt, api_key=None, api_provider="groq"):
         if api_key is None:
             api_key = os.environ.get(provider["env_var"])
             if api_key is None and provider_name == "openrouter":
-                api_key = DEFAULT_GROQ_KEY
+                api_key = DEFAULT_OPENROUTER_KEY
 
         if not api_key:
             st.warning(f"⚠️  No API key found for {provider_name}")
