@@ -1012,28 +1012,60 @@ def generate_html_resume(resume_data):
 # -----------------------------
 
 def extract_json_from_response(response_text):
-    """Extract and parse JSON from LLM response"""
+    """Extract and parse JSON from LLM response with enhanced error handling"""
+    
+    # First try: Direct JSON parse
     try:
-        return json.loads(response_text)
+        cleaned = response_text.strip()
+        return json.loads(cleaned)
     except json.JSONDecodeError:
         pass
-
+    
+    # Second try: Remove markdown code blocks
+    try:
+        cleaned = re.sub(r'```json\s*', '', response_text)
+        cleaned = re.sub(r'```\s*$', '', cleaned)
+        cleaned = cleaned.strip()
+        return json.loads(cleaned)
+    except json.JSONDecodeError:
+        pass
+    
+    # Third try: Find JSON object using regex
     json_patterns = [
-        r'```json\s*(.*?)\s*```',
-        r'```\s*(.*?)\s*```',
-        r'\{.*\}',
+        r'```json\s*(\{.*?\})\s*```',
+        r'```\s*(\{.*?\})\s*```',
+        r'(\{[^{}]*\{[^{}]*\}[^{}]*\})',
+        r'(\{.*\})',
     ]
-
+    
     for pattern in json_patterns:
-        match = re.search(pattern, response_text, re.DOTALL)
-        if match:
+        matches = re.finditer(pattern, response_text, re.DOTALL)
+        for match in matches:
             try:
-                json_str = match.group(1) if '```' in pattern else match.group(0)
-                return json.loads(json_str)
-            except json.JSONDecodeError:
+                json_str = match.group(1) if match.lastindex else match.group(0)
+                json_str = json_str.strip()
+                parsed = json.loads(json_str)
+                if isinstance(parsed, dict) and 'contact' in parsed:
+                    return parsed
+            except (json.JSONDecodeError, IndexError):
                 continue
-
-    raise ValueError("Could not extract valid JSON from response")
+    
+    # Fourth try: Extract largest JSON-like structure
+    try:
+        start = response_text.find('{')
+        end = response_text.rfind('}')
+        if start != -1 and end != -1 and end > start:
+            json_str = response_text[start:end+1]
+            parsed = json.loads(json_str)
+            if isinstance(parsed, dict):
+                return parsed
+    except json.JSONDecodeError:
+        pass
+    
+    st.error("🔍 DEBUG: Could not parse JSON. Response preview:")
+    st.code(response_text[:500] + "..." if len(response_text) > 500 else response_text)
+    
+    raise ValueError("Could not extract valid JSON from response. The AI may have returned malformed data.")
 
 
 # -----------------------------
@@ -1159,16 +1191,33 @@ def main():
         st.warning("⏳ This may take 30-60 seconds for best quality...")
 
         try:
-            # Generate enhanced prompt
-            enhanced_prompt = ResumeTemplates.get_enhanced_prompt(user_input)
+    # Generate enhanced prompt
+    enhanced_prompt = ResumeTemplates.get_enhanced_prompt(user_input)
 
-            # Call LLM API
-            with st.spinner("🎯 Crafting keyword-rich professional summary and achievement-focused content..."):
+    # Call LLM API with retry logic
+    MAX_RETRIES = 3
+    retry_count = 0
+    resume_data = None
+
+    while retry_count < MAX_RETRIES and resume_data is None:
+        try:
+            with st.spinner(f"🎯 Attempt {retry_count + 1}/{MAX_RETRIES}: Generating resume..."):
                 llm_response = call_llm_api(enhanced_prompt)
-
-            # Extract JSON from response
-            st.info("📊 Parsing resume data...")
-            resume_data = extract_json_from_response(llm_response)
+                st.info("📊 Parsing resume data...")
+                resume_data = extract_json_from_response(llm_response)
+                break  # Success!
+        except Exception as e:
+            retry_count += 1
+            if retry_count < MAX_RETRIES:
+                st.warning(f"⚠️ Attempt {retry_count} failed. Retrying...")
+                import time
+                time.sleep(2)
+            else:
+                st.error(f"❌ All {MAX_RETRIES} attempts failed: {str(e)}")
+                raise
+    
+    if resume_data is None:
+        raise Exception("Failed to generate valid resume data after all retries")
 
             # Validate professional summary
             summary = resume_data.get('professional_summary', '')
