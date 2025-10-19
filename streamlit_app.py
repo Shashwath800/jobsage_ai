@@ -1045,8 +1045,8 @@ def extract_json_from_response(response_text):
     
     # Second try: Remove markdown code blocks
     try:
-        cleaned = re.sub(r'```json\s*', '', response_text)
-        cleaned = re.sub(r'```\s*, '', cleaned)
+        cleaned = re.sub(r'```json\s*','', response_text)
+        cleaned = re.sub(r'```\s*','', cleaned)
         cleaned = cleaned.strip()
         return json.loads(cleaned)
     except json.JSONDecodeError:
