@@ -655,7 +655,7 @@ def call_llm_api(prompt, api_key=None, api_provider="groq"):
         "groq": {
             "url": "https://api.groq.com/openai/v1/chat/completions",
             "env_var": "GROQ_API_KEY",
-            "model": "openai/gpt-oss-120b",
+            "model": "openai/gpt-oss-20b",
             "max_tokens": 4096
         },
         "together": {
