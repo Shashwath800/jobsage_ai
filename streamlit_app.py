@@ -666,7 +666,7 @@ def call_llm_api(prompt, api_key=None, api_provider="groq"):
     }
 
     providers_to_try = [api_provider] if api_provider in providers else []
-    providers_to_try.extend([p for p in ["groq", "together", "openai"] if p not in providers_to_try])
+    providers_to_try.extend([p for p in ["openrouter", "together", "openai"] if p not in providers_to_try])
 
     last_error = None
 
@@ -675,7 +675,7 @@ def call_llm_api(prompt, api_key=None, api_provider="groq"):
 
         if api_key is None:
             api_key = os.environ.get(provider["env_var"])
-            if api_key is None and provider_name == "groq":
+            if api_key is None and provider_name == "openrouter":
                 api_key = DEFAULT_GROQ_KEY
 
         if not api_key:
