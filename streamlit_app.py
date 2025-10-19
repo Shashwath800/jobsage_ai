@@ -433,13 +433,15 @@ JSON STRUCTURE - STRICT COMPLIANCE:
 ═══════════════════════════════════════════════════════════════
 
 Return ONLY valid JSON with this exact structure:
+{
 "page_formatting": {
-  "target_length": "One Page (A4/Letter)",
-  "word_count_range": "550-650",
-  "section_limit": 6,
-  "max_bullets_per_section": 3,
-  "compression_strategy": "Prioritize metrics and ATS keywords; remove redundancy while maintaining impact"
-},
+"target_length": "One Page (A4/Letter)",
+"word_count_range": "550-650",
+"section_limit": 6,
+"max_bullets_per_section": 3,
+"compression_strategy": "Prioritize metrics and ATS keywords; remove redundancy while maintaining impact"
+}
+}
 
 
 {{
