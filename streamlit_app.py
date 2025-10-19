@@ -433,19 +433,15 @@ JSON STRUCTURE - STRICT COMPLIANCE:
 ═══════════════════════════════════════════════════════════════
 
 Return ONLY valid JSON with this exact structure:
-{{
-"page_formatting": {
-"target_length": "One Page (A4/Letter)",
-"word_count_range": "550-650",
-"section_limit": 6,
-"max_bullets_per_section": 3,
-"compression_strategy": "Prioritize metrics and ATS keywords; remove redundancy while maintaining impact"
-}
-
-
-
-
-  "contact": {{
+{
+  "page_formatting": {
+    "target_length": "One Page (A4/Letter)",
+    "word_count_range": "550-650",
+    "section_limit": 6,
+    "max_bullets_per_section": 3,
+    "compression_strategy": "Prioritize metrics and ATS keywords; remove redundancy while maintaining impact"
+  },
+  "contact": {
     "name": "Professional Name",
     "email": "professional.email@domain.com",
     "phone": "(555) 123-4567",
@@ -453,10 +449,10 @@ Return ONLY valid JSON with this exact structure:
     "linkedin": "linkedin.com/in/username",
     "github": "github.com/username",
     "portfolio": "www.portfolio.com"
-  }},
-  "professional_summary": "MUST BE 4-5 COMPELLING SENTENCES, 130-160 WORDS, MAGNETIC AND ACHIEVEMENT-FOCUSED. Follow enhanced structure with power words. START with dynamic descriptor (Results-driven/Award-winning/Innovative). Include [impressive role] + [years] + [specialization] → [2 MAJOR achievements with BIG metrics] → [6 technical skills with context] → [recognized qualities + soft skills] → [ambitious career goal]. MINIMUM 3 quantified achievements. Use words like: spearheaded, pioneered, transformed, orchestrated, renowned, celebrated. INCLUDE 12-15 KEYWORDS FROM: {', '.join(keywords['technical'][:8])}, {', '.join(keywords['soft_skills'][:4])}. Make recruiters STOP and READ.",
+  },
+  "professional_summary": "MUST BE 4-5 COMPELLING SENTENCES, 130-160 WORDS, MAGNETIC AND ACHIEVEMENT-FOCUSED. Follow enhanced structure with power words. START with dynamic descriptor (Results-driven/Award-winning/Innovative). Include [impressive role] + [years] + [specialization] → [2 MAJOR achievements with BIG metrics] → [6 technical skills with context] → [recognized qualities + soft skills] → [ambitious career goal]. MINIMUM 3 quantified achievements. Use words like: spearheaded, pioneered, transformed, orchestrated, renowned, celebrated. INCLUDE 12-15 KEYWORDS FROM: Python, JavaScript, React, Node.js, AWS, SQL, Machine Learning, Data Analysis, Communication, Leadership, Collaboration, Problem-Solving. Make recruiters STOP and READ.",
   "education": [
-    {{
+    {
       "degree": "Full degree name (Bachelor of Science in Computer Science)",
       "institution": "University Name",
       "location": "City, State",
@@ -464,55 +460,53 @@ Return ONLY valid JSON with this exact structure:
       "gpa": "3.X/4.0 (only if 3.5+)",
       "relevant_coursework": ["Course 1", "Course 2", "Course 3", "Course 4", "Course 5", "Course 6"],
       "honors": ["Dean's List", "Scholarship Name", "Academic Award"]
-    }}
+    }
   ],
-  "technical_skills": {{
-    "Programming Languages": ["PRIMARY from input first", "Complementary languages", "Include versions: Python 3.x", "Both forms: JavaScript (JS)", "5-8 total"],
-    "Frameworks & Libraries": ["Frontend: React, Angular, Vue", "Backend: Node.js, Express, Django", "Full ecosystem", "6-10 total"],
-    "Tools & Technologies": ["Version Control: Git, GitHub", "CI/CD: Jenkins, GitHub Actions", "Containers: Docker, Kubernetes", "6-8 total"],
-    "Databases & Cloud": ["SQL: PostgreSQL, MySQL", "NoSQL: MongoDB, Redis", "Cloud: AWS (S3, EC2, Lambda)", "5-7 total"],
-    "Methodologies & Practices": ["Agile/Scrum", "Test-Driven Development", "RESTful API Design", "Microservices", "4-6 total"]
-  }},
+  "technical_skills": {
+    "Programming Languages": ["Python 3.x", "JavaScript (JS)", "TypeScript", "Java", "C++"],
+    "Frameworks & Libraries": ["React", "Angular", "Vue", "Node.js", "Express", "Django"],
+    "Tools & Technologies": ["Git", "GitHub", "Docker", "Kubernetes", "Jenkins", "GitHub Actions"],
+    "Databases & Cloud": ["PostgreSQL", "MySQL", "MongoDB", "Redis", "AWS (S3, EC2, Lambda)"],
+    "Methodologies & Practices": ["Agile/Scrum", "Test-Driven Development", "RESTful API Design", "Microservices"]
+  },
   "experience": [
-    {{
+    {
       "title": "Job Title (with seniority level)",
       "company": "Company Name",
       "location": "City, State",
       "duration": "Month Year - Month Year",
       "achievements": [
-        "BULLET 1 (BEST): [Action verb: {', '.join(keywords['action_verbs'][:3])}] [specific tech implementation using 2-3 technologies] [achieving] [QUANTIFIED METRIC] [business impact]. Example: 'Architected microservices payment system using Node.js, RabbitMQ, PostgreSQL, processing 100K+ daily transactions with 99.99% reliability, reducing payment failures by 78% and recovering $500K revenue'",
-        "BULLET 2 (TECHNICAL): [Action verb] [complex solution] [specific tech stack] [solving problem] [improving metric by %]. Example: 'Engineered real-time analytics pipeline using Apache Kafka, Spark, Elasticsearch, enabling sub-second processing for 5M+ events/day, reducing report generation from 4 hours to 8 minutes'",
-        "BULLET 3 (LEADERSHIP): [Action verb] [team collaboration] [methodology] [delivering outcome] [impact metric]. Example: 'Led cross-functional agile team of 8 developers and 2 designers through platform redesign, delivering 15 features on schedule, increasing customer satisfaction by 40%'",
-        "BULLET 4 (OPTIONAL): Technical achievement with metrics",
-        "BULLET 5 (OPTIONAL): Optimization/automation with quantified results"
+        "Architected microservices payment system using Node.js, RabbitMQ, PostgreSQL, processing 100K+ daily transactions with 99.99% reliability, reducing payment failures by 78% and recovering $500K revenue.",
+        "Engineered real-time analytics pipeline using Apache Kafka, Spark, Elasticsearch, enabling sub-second processing for 5M+ events/day, reducing report generation from 4 hours to 8 minutes.",
+        "Led cross-functional agile team of 8 developers and 2 designers through platform redesign, delivering 15 features on schedule and increasing customer satisfaction by 40%."
       ]
-    }}
+    }
   ],
   "projects": [
-    {{
+    {
       "title": "Project Name",
-      "technologies": "Full Tech Stack: 8-12 technologies listed",
+      "technologies": "Full Tech Stack: React, Redux, Node.js, Express, MongoDB, Socket.io, AWS S3, Docker",
       "duration": "Month Year - Month Year",
       "description": [
-        "BULLET 1: [Action verb] [what was built - specific] [using full tech stack: 8-12 technologies] [achieving metric]. Example: 'Developed full-stack social platform using React, Redux, Node.js, Express, MongoDB, Socket.io, AWS S3, Docker, supporting 2,500+ users with real-time messaging, achieving 95% retention rate'",
-        "BULLET 2: [Action verb] [key technical feature] [implementation] [quantified improvement]. Example: 'Implemented advanced caching with Redis and CDN integration, reducing page load times by 65% from 3.2s to 1.1s, improving SEO rankings by 40%'",
-        "BULLET 3 (OPTIONAL): Additional feature or business impact"
+        "Developed full-stack social platform using React, Redux, Node.js, Express, MongoDB, Socket.io, AWS S3, Docker, supporting 2,500+ users with real-time messaging and achieving 95% retention rate.",
+        "Implemented advanced caching with Redis and CDN integration, reducing page load times by 65% from 3.2s to 1.1s and improving SEO rankings by 40%."
       ],
       "github": "github.com/username/project",
       "demo": "project-demo.com"
-    }}
+    }
   ],
   "certifications": [
-    "Certification Name (Issuing Organization, Year)",
-    "AWS Certified Solutions Architect (Amazon Web Services, {current_year})",
-    "Google Data Analytics Professional Certificate (Google, {current_year})"
+    "AWS Certified Solutions Architect (Amazon Web Services, 2025)",
+    "Google Data Analytics Professional Certificate (Google, 2025)",
+    "Certification Name (Issuing Organization, Year)"
   ],
   "achievements": [
-    "FORMAT: [Specific achievement] [quantified impact] [event/competition] [year]. Example: 'Won 1st Place MIT Hackathon {current_year} among 200+ participants - Built AI code review tool using GPT-4 and Python, adopted by 500+ developers, reducing review time by 45%'",
-    "Example: 'Open Source Contributor - Authored 125+ commits to TensorFlow and React repositories (100K+ GitHub stars) with 15 merged PRs improving performance'",
-    "Example: 'Published ML optimization research paper in IEEE Conference, cited 50+ times'"
+    "Won 1st Place MIT Hackathon 2025 among 200+ participants - Built AI code review tool using GPT-4 and Python, adopted by 500+ developers, reducing review time by 45%.",
+    "Open Source Contributor - Authored 125+ commits to TensorFlow and React repositories (100K+ GitHub stars) with 15 merged PRs improving performance.",
+    "Published ML optimization research paper in IEEE Conference, cited 50+ times."
   ]
-}}
+}
+
 
 ═══════════════════════════════════════════════════════════════
 FINAL QUALITY ASSURANCE (100% Completion Required):
