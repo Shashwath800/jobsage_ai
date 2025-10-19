@@ -505,7 +505,7 @@ Return ONLY valid JSON with this exact structure:
     "Open Source Contributor - Authored 125+ commits to TensorFlow and React repositories (100K+ GitHub stars) with 15 merged PRs improving performance.",
     "Published ML optimization research paper in IEEE Conference, cited 50+ times."
   ]
-}
+}}
 
 
 ═══════════════════════════════════════════════════════════════
