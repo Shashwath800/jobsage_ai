@@ -433,15 +433,15 @@ JSON STRUCTURE - STRICT COMPLIANCE:
 ═══════════════════════════════════════════════════════════════
 
 Return ONLY valid JSON with this exact structure:
-{
-  "page_formatting": {
+{{
+  "page_formatting": {{
     "target_length": "One Page (A4/Letter)",
     "word_count_range": "550-650",
     "section_limit": 6,
     "max_bullets_per_section": 3,
     "compression_strategy": "Prioritize metrics and ATS keywords; remove redundancy while maintaining impact"
-  },
-  "contact": {
+  }},
+  "contact": {{
     "name": "Professional Name",
     "email": "professional.email@domain.com",
     "phone": "(555) 123-4567",
@@ -449,10 +449,10 @@ Return ONLY valid JSON with this exact structure:
     "linkedin": "linkedin.com/in/username",
     "github": "github.com/username",
     "portfolio": "www.portfolio.com"
-  },
+  }},
   "professional_summary": "MUST BE 4-5 COMPELLING SENTENCES, 130-160 WORDS, MAGNETIC AND ACHIEVEMENT-FOCUSED. Follow enhanced structure with power words. START with dynamic descriptor (Results-driven/Award-winning/Innovative). Include [impressive role] + [years] + [specialization] → [2 MAJOR achievements with BIG metrics] → [6 technical skills with context] → [recognized qualities + soft skills] → [ambitious career goal]. MINIMUM 3 quantified achievements. Use words like: spearheaded, pioneered, transformed, orchestrated, renowned, celebrated. INCLUDE 12-15 KEYWORDS FROM: Python, JavaScript, React, Node.js, AWS, SQL, Machine Learning, Data Analysis, Communication, Leadership, Collaboration, Problem-Solving. Make recruiters STOP and READ.",
   "education": [
-    {
+    {{
       "degree": "Full degree name (Bachelor of Science in Computer Science)",
       "institution": "University Name",
       "location": "City, State",
@@ -460,17 +460,17 @@ Return ONLY valid JSON with this exact structure:
       "gpa": "3.X/4.0 (only if 3.5+)",
       "relevant_coursework": ["Course 1", "Course 2", "Course 3", "Course 4", "Course 5", "Course 6"],
       "honors": ["Dean's List", "Scholarship Name", "Academic Award"]
-    }
+    }}
   ],
-  "technical_skills": {
+  "technical_skills": {{
     "Programming Languages": ["Python 3.x", "JavaScript (JS)", "TypeScript", "Java", "C++"],
     "Frameworks & Libraries": ["React", "Angular", "Vue", "Node.js", "Express", "Django"],
     "Tools & Technologies": ["Git", "GitHub", "Docker", "Kubernetes", "Jenkins", "GitHub Actions"],
     "Databases & Cloud": ["PostgreSQL", "MySQL", "MongoDB", "Redis", "AWS (S3, EC2, Lambda)"],
     "Methodologies & Practices": ["Agile/Scrum", "Test-Driven Development", "RESTful API Design", "Microservices"]
-  },
+  }},
   "experience": [
-    {
+    {{
       "title": "Job Title (with seniority level)",
       "company": "Company Name",
       "location": "City, State",
@@ -480,10 +480,10 @@ Return ONLY valid JSON with this exact structure:
         "Engineered real-time analytics pipeline using Apache Kafka, Spark, Elasticsearch, enabling sub-second processing for 5M+ events/day, reducing report generation from 4 hours to 8 minutes.",
         "Led cross-functional agile team of 8 developers and 2 designers through platform redesign, delivering 15 features on schedule and increasing customer satisfaction by 40%."
       ]
-    }
+    }}
   ],
   "projects": [
-    {
+    {{
       "title": "Project Name",
       "technologies": "Full Tech Stack: React, Redux, Node.js, Express, MongoDB, Socket.io, AWS S3, Docker",
       "duration": "Month Year - Month Year",
@@ -493,7 +493,7 @@ Return ONLY valid JSON with this exact structure:
       ],
       "github": "github.com/username/project",
       "demo": "project-demo.com"
-    }
+    }}
   ],
   "certifications": [
     "AWS Certified Solutions Architect (Amazon Web Services, 2025)",
