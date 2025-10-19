@@ -647,7 +647,7 @@ def call_llm_api(prompt, api_key=None, api_provider="groq"):
     providers = {
         "openrouter": {
             "url": "https://openrouter.ai/api/v1/chat/completions",
-            "env_var": "OPENROUTER_API_KEYY",
+            "env_var": "OPENROUTER_API_KEY",
             "model": "openai/gpt-oss-120b",
             "max_tokens": 4096
         },
