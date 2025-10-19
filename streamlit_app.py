@@ -205,56 +205,189 @@ class ATSKeywordExtractor:
 # ENHANCED PROMPT TEMPLATES
 # -----------------------------
 
+
 class ResumeTemplates:
     @staticmethod
     def get_enhanced_prompt(user_input):
-        """Generate highly optimized prompt for ATS-friendly resumes with strong professional summaries"""
+        """Generate ultra-optimized prompt for comprehensive ATS-friendly resumes"""
         current_year = datetime.now().year
-        
-        # Get industry-specific keywords
         keywords = ATSKeywordExtractor.get_industry_keywords(user_input)
         
-        prompt = f"""You are an expert ATS (Applicant Tracking System) resume writer and career coach. Create a professional, ATS-optimized resume in JSON format.
+        prompt = f"""You are a SENIOR ATS OPTIMIZATION SPECIALIST and CERTIFIED PROFESSIONAL RESUME WRITER (CPRW) with 15+ years experience. Your resumes achieve 94% interview callback rate and rank in top 1% for ATS compatibility.
+
+MISSION: Create COMPREHENSIVE, RECRUITER-READY, ATS-OPTIMIZED resume extracting EVERY detail from user input and transforming it into compelling, keyword-rich content that passes automated screening AND impresses human recruiters.
 
 USER INPUT: "{user_input}"
 
-CRITICAL REQUIREMENTS:
+═══════════════════════════════════════════════════════════════
+CRITICAL EXTRACTION & ANALYSIS:
+═══════════════════════════════════════════════════════════════
 
-1. PROFESSIONAL SUMMARY (Most Important):
-   - Write a compelling 3-4 line summary that:
-     * Opens with a strong value proposition (e.g., "Results-driven [Role] with X years of experience...")
-     * Highlights 2-3 key achievements with quantifiable metrics
-     * Incorporates 3-5 relevant industry keywords naturally: {', '.join(keywords['technical'][:5])}
-     * Ends with career objective aligned to target role
-   - Use powerful action words: {', '.join(keywords['action_verbs'][:5])}
-   - Make it achievement-focused, not responsibility-focused
-   - Example: "Results-driven Software Engineer with 3+ years of experience developing scalable web applications using React and Node.js, reducing load times by 40% and serving 100K+ daily users. Proven expertise in Agile methodologies and cloud deployment. Seeking to leverage full-stack expertise to drive innovation at a fast-paced tech company."
+1. DEEP TEXT MINING - Extract Everything:
+   • Parse ALL information: skills, experience, education, achievements, tools, technologies, companies, roles, years, projects, certifications
+   • Identify implicit skills relevant to mentioned technologies
+   • Expand abbreviations keeping both (e.g., "ML" → "Machine Learning (ML)")
+   • Infer related technologies (React → JavaScript, Node.js, npm, Webpack)
+   • Calculate derived metrics ("3 years" → started {current_year - 3})
+   • NEVER discard details - everything has value
 
-2. ATS OPTIMIZATION:
-   - Use standard section headers: "Professional Summary", "Technical Skills", "Professional Experience", "Projects", "Education"
-   - Include relevant keywords naturally throughout: {', '.join(keywords['technical'][:8])}
-   - Use industry-standard terminology
-   - Avoid graphics, tables, or special formatting
-   - Include both acronyms and full terms (e.g., "ML (Machine Learning)")
+2. INTELLIGENT KEYWORD ENHANCEMENT:
+   • Inject 30-50 industry-specific ATS keywords
+   • Primary keywords: {', '.join(keywords['technical'][:12])}
+   • Soft skills: {', '.join(keywords['soft_skills'][:8])}
+   • Power verbs: {', '.join(keywords['action_verbs'][:12])}
+   • Include variations: "JavaScript (JS)", "Artificial Intelligence (AI)"
+   • Use full stacks: "MERN (MongoDB, Express.js, React, Node.js)"
+   • Add buzzwords: Agile/Scrum, CI/CD, Microservices, Cloud-Native
 
-3. ACHIEVEMENT-BASED BULLETS:
-   - Use the STAR method: Situation, Task, Action, Result
-   - Start with action verbs: {', '.join(keywords['action_verbs'][:10])}
-   - Include quantifiable metrics (numbers, percentages, timeframes)
-   - Format: "[Action Verb] [what you did] [resulting in/achieving] [quantifiable impact]"
-   - Example: "Engineered a real-time analytics dashboard using React and Python, reducing report generation time by 60% and enabling data-driven decisions for 50+ stakeholders"
+3. RECRUITER PSYCHOLOGY - First 6 Seconds Matter:
+   • F-Pattern reading: Most important keywords in first 3 lines
+   • Numbers attract eyes: Every bullet needs metrics (%, $, X users, Y% improvement)
+   • Skills hierarchy: In-demand skills first
+   • Recent = Relevant: Emphasize recent experience
+   • Problem-Solution-Impact: Each bullet shows challenge → action → result
 
-4. TECHNICAL SKILLS:
-   - Group by category for easy ATS scanning
-   - List in order of relevance to target role
-   - Include proficiency levels if applicable
-   - Relevant keywords: {', '.join(keywords['technical'][:12])}
+4. PROFESSIONAL SUMMARY (40% of ATS Score):
+   
+   EXACT 4-5 sentence structure:
+   
+   Sentence 1: "[Job Title] with [X+] years of [core specialty], specializing in [2-3 key technologies from input]"
+   Sentence 2: "Proven track record of [achievement 1 with metric] and [achievement 2 with metric], resulting in [business impact]"
+   Sentence 3: "Expert in [5-6 technical skills]: {', '.join(keywords['technical'][:6])}"
+   Sentence 4: "Strong [2-3 soft skills]: {', '.join(keywords['soft_skills'][:3])}, with experience in [methodology]"
+   Sentence 5: "Seeking to leverage [unique value] to drive [business outcome] at [company type]"
+   
+   Requirements:
+   • Keyword Density: 12-15 keywords in 120-150 words
+   • Tone: Confident, achievement-driven, metric-heavy
+   • Must Include: Role 2x, years, 3 metrics, 6 technical skills, 2 soft skills
+   
+   EXAMPLE: "Senior Full-Stack Developer with 5+ years architecting enterprise web applications using React, Node.js, and PostgreSQL. Delivered 40% performance improvement through Redis caching and increased user retention by 35% via personalized UX features, generating $3M additional revenue. Expert in JavaScript/TypeScript, Python, AWS, Docker, GraphQL, and microservices architecture. Strong problem-solving, technical leadership, and agile collaboration skills with Scrum Master certification. Seeking to leverage expertise in scalable system design to drive digital transformation at innovative fintech company."
 
-5. EXPERIENCE & PROJECTS:
-   - Focus on impact and results, not just responsibilities
-   - Use metrics: improved X by Y%, reduced Z by N hours, served M users
-   - Highlight technologies used in context
-   - Show business value, not just technical details
+5. ATS PARSING OPTIMIZATION (30% of ATS Score):
+   • EXACT headers: "Professional Summary", "Technical Skills", "Professional Experience", "Projects", "Education", "Certifications", "Achievements"
+   • Multiple keyword forms: "ML (Machine Learning)", "API (Application Programming Interface)"
+   • Tool + Version: "React 18", "Python 3.11", "Node.js 20"
+   • Skill + Context: "REST APIs", "Agile Scrum", "CI/CD Automation"
+   • Front-load keywords in first 3 bullets
+   • Repeat top 5 keywords 3-4x across sections
+
+6. ACHIEVEMENT FORMULA - CAR Method (Context-Action-Result):
+   
+   Format: "[ACTION VERB] + [specific technical implementation] + [using X, Y, Z] + [achieving/resulting in] + [QUANTIFIED METRIC] + [business impact]"
+   
+   Metrics Required:
+   • Performance: "by X%", "X% faster", "reduced A to B"
+   • Scale: "serving Xk users", "processing Xk transactions/day"
+   • Time: "X weeks ahead", "reducing time by X hours"
+   • Business: "$Xk revenue", "X% cost reduction", "X% user growth"
+   
+   If no metrics provided, INFER realistic ones:
+   • Web app → "serving 1,000+ users", "99.5% uptime"
+   • Optimization → "reducing load time 30-50%", "improving performance 40%"
+   • Team work → "coordinating 5-8 member team"
+   
+   GOOD EXAMPLES:
+   ✅ "Engineered RESTful APIs using Node.js and MongoDB, implementing Redis caching that reduced database queries by 65% and improved response time from 800ms to 280ms, enhancing experience for 50K+ daily users"
+   ✅ "Architected React dashboard with WebSocket integration and D3.js visualizations, enabling executives to make data-driven decisions 3x faster and contributing to 22% operational efficiency increase"
+   ✅ "Led Agile team of 6 engineers through CI/CD pipeline migration to GitHub Actions and Docker, reducing deployment time by 70% from 2 hours to 35 minutes and eliminating 90% of production bugs"
+
+7. TECHNICAL SKILLS (20% of ATS Score):
+   
+   Priority-based organization:
+   • Programming Languages: Most relevant first (from input) + related ones
+   • Frameworks & Libraries: Full ecosystem (React → React, Redux, Next.js)
+   • Cloud & DevOps: AWS/Azure/GCP, Docker, Kubernetes, CI/CD
+   • Databases: SQL and NoSQL options
+   • Tools & Platforms: Version control, project management
+   • Methodologies: Agile, Scrum, DevOps, TDD
+   
+   Rules:
+   • Extract ALL mentioned technologies
+   • Add complementary tech (React → JavaScript, TypeScript, npm)
+   • Include industry standards (Git, REST APIs, JSON)
+   • Add proficiency: "Python (Advanced)", "AWS (Intermediate)"
+   • Total: 25-40 skills across 4-6 categories
+
+8. EXPERIENCE - Extraction & Enhancement:
+   
+   Extract from input:
+   • Company names, titles, dates (infer if vague)
+   • Technologies → highlight in bullets
+   • Numbers/metrics → amplify them
+   • Responsibilities → convert to achievements
+   
+   Each Job Entry:
+   • Title with seniority (Junior/Mid-level/Senior)
+   • Company + industry context
+   • 3-5 achievement bullets (max 5)
+   • Each bullet: 1-2 lines, front-loaded keywords
+   • Technologies in context
+   
+   Bullet Priority:
+   1st: Biggest achievement with best metrics
+   2nd: Technical depth showing expertise
+   3rd: Collaboration/leadership impact
+   4th-5th: Additional technical achievements
+   
+   If NO experience: Create internship/project-based roles, use academic projects
+
+9. PROJECTS - Turn Everything Into Projects:
+   
+   Extract:
+   • Any app/website/tool → full project entry
+   • Coursework → reframe as projects
+   • Hackathons, bootcamp work → showcase
+   • Personal learning → "personal projects"
+   
+   Each Project:
+   • Compelling title (professional)
+   • FULL tech stack (8-12 technologies)
+   • 2-3 achievement bullets with metrics
+   • GitHub link (infer URL) + demo link
+   • Business problem + impact
+   
+   Project Metrics (infer):
+   • E-commerce → "serving 500+ users with $10K+ transactions"
+   • Chat app → "enabling real-time messaging for 200+ concurrent users"
+   • Dashboard → "reducing analysis time by 60% for 30+ stakeholders"
+
+10. EDUCATION - Maximize Details:
+    • Degree type, major, university, location, graduation
+    • GPA (only if 3.5+, calculate from "good grades" → 3.7)
+    • Relevant coursework (6-8 courses with keywords)
+    • Honors (Dean's List, scholarships, awards)
+    • Academic projects (reference in Projects section)
+    
+    If minimal: Infer standard degree, add typical coursework, include online certs
+
+11. CERTIFICATIONS & ACHIEVEMENTS:
+    • Extract any certification (AWS, Google, Microsoft)
+    • Add relevant industry certs if not mentioned
+    • Hackathon wins, awards, publications
+    • Open source contributions
+    • Leadership roles with impact
+    
+    Format: "Certification Name (Issuing Org, Year)" or "Achievement with metric (Year)"
+
+12. RECRUITER-FRIENDLY FORMATTING:
+    ✅ DO:
+    • Keep bullets 1-2 lines (6-second skim)
+    • Front-load keywords (first 3-5 words)
+    • Parallel structure (all past tense verbs)
+    • Show progression
+    • Consistent date formats
+    
+    ❌ DON'T:
+    • Personal pronouns (I, me, my, we)
+    • Soft skills in bullets (show through achievements)
+    • Passive voice ("was responsible for")
+    • Paragraphs (only bullets)
+    • Irrelevant details
+
+═══════════════════════════════════════════════════════════════
+JSON STRUCTURE - STRICT COMPLIANCE:
+═══════════════════════════════════════════════════════════════
 
 Return ONLY valid JSON with this exact structure:
 
@@ -268,69 +401,128 @@ Return ONLY valid JSON with this exact structure:
     "github": "github.com/username",
     "portfolio": "www.portfolio.com"
   }},
-  "professional_summary": "COMPELLING 3-4 LINE SUMMARY following guidelines above. MUST include achievements, keywords, and metrics. This is the MOST IMPORTANT section.",
+  "professional_summary": "MUST BE 4-5 SENTENCES, 120-150 WORDS. Follow structure: [Job Title] with [X] years → [2 achievements with metrics] → [6 technical skills] → [2 soft skills + methodology] → [career goal]. INCLUDE 12-15 KEYWORDS FROM: {', '.join(keywords['technical'][:8])}, {', '.join(keywords['soft_skills'][:4])}",
   "education": [
     {{
-      "degree": "Full degree name (e.g., Bachelor of Science in Computer Science)",
+      "degree": "Full degree name (Bachelor of Science in Computer Science)",
       "institution": "University Name",
       "location": "City, State",
       "graduation": "Month Year",
       "gpa": "3.X/4.0 (only if 3.5+)",
-      "relevant_coursework": ["Course 1", "Course 2", "Course 3", "Course 4"],
-      "honors": ["Dean's List", "Scholarship Name"]
+      "relevant_coursework": ["Course 1", "Course 2", "Course 3", "Course 4", "Course 5", "Course 6"],
+      "honors": ["Dean's List", "Scholarship Name", "Academic Award"]
     }}
   ],
   "technical_skills": {{
-    "Programming Languages": ["Language1", "Language2", "Language3"],
-    "Frameworks & Libraries": ["Framework1", "Framework2", "Library1"],
-    "Tools & Technologies": ["Tool1", "Tool2", "Tool3"],
-    "Databases & Cloud": ["Database1", "Cloud Platform", "Tool"]
+    "Programming Languages": ["PRIMARY from input first", "Complementary languages", "Include versions: Python 3.x", "Both forms: JavaScript (JS)", "5-8 total"],
+    "Frameworks & Libraries": ["Frontend: React, Angular, Vue", "Backend: Node.js, Express, Django", "Full ecosystem", "6-10 total"],
+    "Tools & Technologies": ["Version Control: Git, GitHub", "CI/CD: Jenkins, GitHub Actions", "Containers: Docker, Kubernetes", "6-8 total"],
+    "Databases & Cloud": ["SQL: PostgreSQL, MySQL", "NoSQL: MongoDB, Redis", "Cloud: AWS (S3, EC2, Lambda)", "5-7 total"],
+    "Methodologies & Practices": ["Agile/Scrum", "Test-Driven Development", "RESTful API Design", "Microservices", "4-6 total"]
   }},
   "experience": [
     {{
-      "title": "Job Title",
+      "title": "Job Title (with seniority level)",
       "company": "Company Name",
       "location": "City, State",
       "duration": "Month Year - Month Year",
       "achievements": [
-        "[Action Verb] [specific accomplishment] resulting in [quantified impact with metrics]",
-        "[Action Verb] [technical implementation] improving [metric] by [percentage/number]",
-        "[Action Verb] [project/initiative] achieving [measurable result]"
+        "BULLET 1 (BEST): [Action verb: {', '.join(keywords['action_verbs'][:3])}] [specific tech implementation using 2-3 technologies] [achieving] [QUANTIFIED METRIC] [business impact]. Example: 'Architected microservices payment system using Node.js, RabbitMQ, PostgreSQL, processing 100K+ daily transactions with 99.99% reliability, reducing payment failures by 78% and recovering $500K revenue'",
+        "BULLET 2 (TECHNICAL): [Action verb] [complex solution] [specific tech stack] [solving problem] [improving metric by %]. Example: 'Engineered real-time analytics pipeline using Apache Kafka, Spark, Elasticsearch, enabling sub-second processing for 5M+ events/day, reducing report generation from 4 hours to 8 minutes'",
+        "BULLET 3 (LEADERSHIP): [Action verb] [team collaboration] [methodology] [delivering outcome] [impact metric]. Example: 'Led cross-functional agile team of 8 developers and 2 designers through platform redesign, delivering 15 features on schedule, increasing customer satisfaction by 40%'",
+        "BULLET 4 (OPTIONAL): Technical achievement with metrics",
+        "BULLET 5 (OPTIONAL): Optimization/automation with quantified results"
       ]
     }}
   ],
   "projects": [
     {{
       "title": "Project Name",
-      "technologies": "Tech Stack (list all relevant keywords)",
+      "technologies": "Full Tech Stack: 8-12 technologies listed",
       "duration": "Month Year - Month Year",
       "description": [
-        "[Action Verb] [what was built] achieving [specific metric/outcome]",
-        "[Action Verb] [key feature/optimization] resulting in [quantified improvement]"
+        "BULLET 1: [Action verb] [what was built - specific] [using full tech stack: 8-12 technologies] [achieving metric]. Example: 'Developed full-stack social platform using React, Redux, Node.js, Express, MongoDB, Socket.io, AWS S3, Docker, supporting 2,500+ users with real-time messaging, achieving 95% retention rate'",
+        "BULLET 2: [Action verb] [key technical feature] [implementation] [quantified improvement]. Example: 'Implemented advanced caching with Redis and CDN integration, reducing page load times by 65% from 3.2s to 1.1s, improving SEO rankings by 40%'",
+        "BULLET 3 (OPTIONAL): Additional feature or business impact"
       ],
       "github": "github.com/username/project",
       "demo": "project-demo.com"
     }}
   ],
   "certifications": [
-    "Certification Name (Issuing Organization, Year)"
+    "Certification Name (Issuing Organization, Year)",
+    "AWS Certified Solutions Architect (Amazon Web Services, {current_year})",
+    "Google Data Analytics Professional Certificate (Google, {current_year})"
   ],
   "achievements": [
-    "Specific achievement with quantified impact (1 line with metrics)"
+    "FORMAT: [Specific achievement] [quantified impact] [event/competition] [year]. Example: 'Won 1st Place MIT Hackathon {current_year} among 200+ participants - Built AI code review tool using GPT-4 and Python, adopted by 500+ developers, reducing review time by 45%'",
+    "Example: 'Open Source Contributor - Authored 125+ commits to TensorFlow and React repositories (100K+ GitHub stars) with 15 merged PRs improving performance'",
+    "Example: 'Published ML optimization research paper in IEEE Conference, cited 50+ times'"
   ]
 }}
 
-QUALITY CHECKLIST:
-✓ Professional summary is compelling and keyword-rich
-✓ Every bullet point has quantifiable metrics
-✓ Action verbs used consistently
-✓ Industry keywords integrated naturally
-✓ Content is concise (1-2 lines per bullet)
-✓ ATS-friendly formatting
-✓ Focus on achievements, not responsibilities
-✓ Business value clearly demonstrated
+═══════════════════════════════════════════════════════════════
+FINAL QUALITY ASSURANCE (100% Completion Required):
+═══════════════════════════════════════════════════════════════
 
-Generate content for {current_year}. Make it professional, impactful, and ATS-optimized."""
+ATS Optimization (Must Score 90%+):
+✓ Professional summary: 12-15 keywords and 3+ metrics
+✓ Standard section headers (no creative variations)
+✓ Top 10 keywords appear 3-4x across sections
+✓ Both acronyms and full forms (ML + Machine Learning)
+✓ Technical skills: 25-40 skills organized by priority
+✓ Keywords front-loaded in first 3-5 words
+
+Recruiter Appeal (6-Second Test):
+✓ Professional summary compelling and shows value
+✓ Every bullet starts with power action verb
+✓ Each bullet has quantifiable metrics (%, $, numbers)
+✓ Shows progression and increasing responsibility
+✓ Bullets are 1-2 lines maximum
+✓ Technical depth without jargon overload
+
+Content Completeness (Extract Everything):
+✓ ALL user-mentioned technologies included
+✓ Inferred complementary skills added
+✓ Experience/projects created even if vague
+✓ Metrics inferred when not provided (realistic)
+✓ No placeholder text - everything specific
+✓ Education, certifications, achievements fully populated
+
+Achievement Formula (CAR Method):
+✓ Context: Problem/situation clear
+✓ Action: Specific technical solution with tools
+✓ Result: Quantified impact with business value
+✓ Each bullet: 15-25 words, verb + tech + metric + impact
+
+Keyword Density Targets:
+• Professional Summary: 12-15 keywords in 120-150 words (10%)
+• Experience bullets: 3-5 keywords per bullet
+• Projects: 8-12 technologies per project
+• Skills section: 25-40 total skills across 5-6 categories
+
+Final Polish:
+✓ No grammatical errors or typos
+✓ Consistent formatting (dates, capitalization)
+✓ No personal pronouns (I, me, my, we)
+✓ Past tense for previous roles, present for current
+✓ Professional tone (confident not arrogant)
+✓ Valid JSON structure with no syntax errors
+
+═══════════════════════════════════════════════════════════════
+
+IMPORTANT: If user mentions ANY detail, it MUST appear in resume. Transform vague input into specific, compelling content. When in doubt, INCLUDE IT with reasonable inferences.
+
+TARGET: Generate resume optimized for {current_year} that:
+• Passes ATS with 90%+ match score
+• Captures recruiter attention in 6 seconds
+• Demonstrates clear value proposition
+• Shows technical depth AND business impact
+• Makes candidate stand out from 200+ applicants
+
+Return ONLY valid JSON. No explanations, no comments, just JSON structure.
+
+BEGIN GENERATION NOW."""
 
         return prompt
 
