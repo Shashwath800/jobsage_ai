@@ -671,64 +671,57 @@ def call_llm_api(prompt, api_key=None, api_provider="groq"):
     last_error = None
 
     for provider_name in providers_to_try:
-        provider = providers[provider_name]
+    provider = providers[provider_name]
 
-        if api_key is None:
-            api_key = os.environ.get(provider["env_var"])
-            if api_key is None and provider_name == "openrouter":
-                api_key = DEFAULT_OPENROUTER_KEY
+    # Reset key per provider
+    current_key = api_key or os.environ.get(provider["env_var"])
+    if current_key is None and provider_name == "openrouter":
+        current_key = DEFAULT_OPENROUTER_KEY
 
-        if not api_key:
-            st.warning(f"⚠️  No API key found for {provider_name}")
-            continue
+    if not current_key:
+        st.warning(f"⚠️ No API key found for {provider_name}")
+        continue
 
-        try:
-            st.info(f"🔄 Generating with {provider_name.upper()}...")
+    try:
+        st.info(f"🔄 Generating with {provider_name.upper()}...")
 
-            headers = {
-                "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json"
-            }
+        headers = {
+            "Authorization": f"Bearer {current_key}",
+            "Content-Type": "application/json"
+        }
 
-            payload = {
-                "model": provider["model"],
-                "messages": [
-                    {
-                        "role": "system",
-                        "content": "You are an expert ATS resume writer and career coach. You create compelling, keyword-optimized resumes that pass ATS systems and impress recruiters. Always respond with valid JSON only. Focus on achievements, metrics, and impact."
-                    },
-                    {"role": "user", "content": prompt}
-                ],
-                "max_tokens": provider["max_tokens"],
-                "temperature": 0.8
-            }
+        # optional throttling to prevent 429
+        elapsed = time.time() - last_request_time
+        if elapsed < 1 / MAX_REQUESTS_PER_SECOND:
+            time.sleep((1 / MAX_REQUESTS_PER_SECOND) - elapsed)
+        last_request_time = time.time()
 
-            response = requests.post(
-                provider["url"],
-                headers=headers,
-                json=payload,
-                timeout=120
-            )
+        payload = {
+            "model": provider["model"],
+            "messages": [
+                {"role": "system", "content": "You are an expert ATS resume writer..."},
+                {"role": "user", "content": prompt}
+            ],
+            "max_tokens": provider["max_tokens"],
+            "temperature": 0.8
+        }
 
-            if response.status_code != 200:
-                error_detail = response.text[:200]
-                raise Exception(f"HTTP {response.status_code}: {error_detail}")
+        response = requests.post(provider["url"], headers=headers, json=payload, timeout=120)
+        response.raise_for_status()
+        result = response.json()
 
-            response.raise_for_status()
-            result = response.json()
+        content = result.get("choices", [{}])[0].get("message", {}).get("content")
+        if content:
+            st.success(f"✅ Resume generated with {provider_name.upper()}!")
+            return content
+        else:
+            raise Exception(f"Unexpected response format from {provider_name}")
 
-            if "choices" in result and len(result["choices"]) > 0:
-                content = result["choices"][0]["message"]["content"]
-                st.success(f"✅ Resume generated with {provider_name.upper()}!")
-                return content
-            else:
-                raise Exception(f"Unexpected response format from {provider_name}")
+    except Exception as e:
+        last_error = str(e)
+        st.warning(f"⚠️ {provider_name} failed: {last_error[:100]}")
+        continue
 
-        except Exception as e:
-            last_error = str(e)
-            st.warning(f"⚠️  {provider_name} failed: {str(e)[:100]}")
-            api_key = None
-            continue
 
     raise Exception(f"All API providers failed. Last error: {last_error}")
 
