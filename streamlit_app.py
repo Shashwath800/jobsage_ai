@@ -623,7 +623,7 @@ BEGIN GENERATION NOW."""
 def call_llm_api(prompt, api_key=None, api_provider="groq"):
     """Call various LLM APIs with enhanced error handling"""
     
-    DEFAULT_GROQ_KEY = "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"
+    DEFAULT_GROQ_KEY = "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"
 
     providers = {
         "groq": {
