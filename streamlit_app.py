@@ -407,32 +407,11 @@ CRITICAL EXTRACTION & ANALYSIS:
     • Irrelevant details
 
 ═══════════════════════════════════════════════════════════════
-ONE-PAGE RESUME CONSTRAINT (CRITICAL):
-═══════════════════════════════════════════════════════════════
-
-TARGET LENGTH: EXACTLY ONE PAGE (A4 or US Letter)
-
-MANDATORY CONDENSING RULES:
-• TOTAL LENGTH: 550–650 words (max)
-• MAX 6 SECTIONS ONLY: Professional Summary, Technical Skills, Experience, Projects, Education, Certifications/Achievements
-• Professional Summary: 4 sentences (max 120 words)
-• Each job/project: 2–3 concise bullets (15–22 words each)
-• Limit total experience bullets: 8–10 total across all roles
-• Limit total projects: 2–3 high-impact ones only
-• Limit certifications/achievements: 3–4 total combined
-• Use compact, result-driven phrasing — remove redundant adjectives
-• Merge similar technologies into short stacks (e.g., “Python, Django, REST APIs”)
-• Do NOT include soft skills as a separate section — integrate them into bullets and summary
-• Ensure all sections visually fit on one page when exported to PDF (A4/Letter)
-• Prioritize metrics and keywords that improve ATS and recruiter scan (6-second readability)
-• Keep spacing minimal — no long paragraphs, no blank lines
-
-
-═══════════════════════════════════════════════════════════════
 JSON STRUCTURE - STRICT COMPLIANCE:
 ═══════════════════════════════════════════════════════════════
 
 Return ONLY valid JSON with this exact structure:
+
 {{
   "contact": {{
     "name": "Professional Name",
@@ -443,7 +422,7 @@ Return ONLY valid JSON with this exact structure:
     "github": "github.com/username",
     "portfolio": "www.portfolio.com"
   }},
-  "professional_summary": "MUST BE 4-5 COMPELLING SENTENCES, 130-160 WORDS, MAGNETIC AND ACHIEVEMENT-FOCUSED. Follow enhanced structure with power words. START with dynamic descriptor (Results-driven/Award-winning/Innovative). Include [impressive role] + [years] + [specialization] → [2 MAJOR achievements with BIG metrics] → [6 technical skills with context] → [recognized qualities + soft skills] → [ambitious career goal]. MINIMUM 3 quantified achievements. Use words like: spearheaded, pioneered, transformed, orchestrated, renowned, celebrated. INCLUDE 12-15 KEYWORDS FROM: Python, JavaScript, React, Node.js, AWS, SQL, Machine Learning, Data Analysis, Communication, Leadership, Collaboration, Problem-Solving. Make recruiters STOP and READ.",
+  "professional_summary": "MUST BE 4-5 COMPELLING SENTENCES, 130-160 WORDS, MAGNETIC AND ACHIEVEMENT-FOCUSED. Follow enhanced structure with power words. START with dynamic descriptor (Results-driven/Award-winning/Innovative). Include [impressive role] + [years] + [specialization] → [2 MAJOR achievements with BIG metrics] → [6 technical skills with context] → [recognized qualities + soft skills] → [ambitious career goal]. MINIMUM 3 quantified achievements. Use words like: spearheaded, pioneered, transformed, orchestrated, renowned, celebrated. INCLUDE 12-15 KEYWORDS FROM: {', '.join(keywords['technical'][:8])}, {', '.join(keywords['soft_skills'][:4])}. Make recruiters STOP and READ.",
   "education": [
     {{
       "degree": "Full degree name (Bachelor of Science in Computer Science)",
@@ -456,11 +435,11 @@ Return ONLY valid JSON with this exact structure:
     }}
   ],
   "technical_skills": {{
-    "Programming Languages": ["Python 3.x", "JavaScript (JS)", "TypeScript", "Java", "C++"],
-    "Frameworks & Libraries": ["React", "Angular", "Vue", "Node.js", "Express", "Django"],
-    "Tools & Technologies": ["Git", "GitHub", "Docker", "Kubernetes", "Jenkins", "GitHub Actions"],
-    "Databases & Cloud": ["PostgreSQL", "MySQL", "MongoDB", "Redis", "AWS (S3, EC2, Lambda)"],
-    "Methodologies & Practices": ["Agile/Scrum", "Test-Driven Development", "RESTful API Design", "Microservices"]
+    "Programming Languages": ["PRIMARY from input first", "Complementary languages", "Include versions: Python 3.x", "Both forms: JavaScript (JS)", "5-8 total"],
+    "Frameworks & Libraries": ["Frontend: React, Angular, Vue", "Backend: Node.js, Express, Django", "Full ecosystem", "6-10 total"],
+    "Tools & Technologies": ["Version Control: Git, GitHub", "CI/CD: Jenkins, GitHub Actions", "Containers: Docker, Kubernetes", "6-8 total"],
+    "Databases & Cloud": ["SQL: PostgreSQL, MySQL", "NoSQL: MongoDB, Redis", "Cloud: AWS (S3, EC2, Lambda)", "5-7 total"],
+    "Methodologies & Practices": ["Agile/Scrum", "Test-Driven Development", "RESTful API Design", "Microservices", "4-6 total"]
   }},
   "experience": [
     {{
@@ -469,37 +448,39 @@ Return ONLY valid JSON with this exact structure:
       "location": "City, State",
       "duration": "Month Year - Month Year",
       "achievements": [
-        "Architected microservices payment system using Node.js, RabbitMQ, PostgreSQL, processing 100K+ daily transactions with 99.99% reliability, reducing payment failures by 78% and recovering $500K revenue.",
-        "Engineered real-time analytics pipeline using Apache Kafka, Spark, Elasticsearch, enabling sub-second processing for 5M+ events/day, reducing report generation from 4 hours to 8 minutes.",
-        "Led cross-functional agile team of 8 developers and 2 designers through platform redesign, delivering 15 features on schedule and increasing customer satisfaction by 40%."
+        "BULLET 1 (BEST): [Action verb: {', '.join(keywords['action_verbs'][:3])}] [specific tech implementation using 2-3 technologies] [achieving] [QUANTIFIED METRIC] [business impact]. Example: 'Architected microservices payment system using Node.js, RabbitMQ, PostgreSQL, processing 100K+ daily transactions with 99.99% reliability, reducing payment failures by 78% and recovering $500K revenue'",
+        "BULLET 2 (TECHNICAL): [Action verb] [complex solution] [specific tech stack] [solving problem] [improving metric by %]. Example: 'Engineered real-time analytics pipeline using Apache Kafka, Spark, Elasticsearch, enabling sub-second processing for 5M+ events/day, reducing report generation from 4 hours to 8 minutes'",
+        "BULLET 3 (LEADERSHIP): [Action verb] [team collaboration] [methodology] [delivering outcome] [impact metric]. Example: 'Led cross-functional agile team of 8 developers and 2 designers through platform redesign, delivering 15 features on schedule, increasing customer satisfaction by 40%'",
+        "BULLET 4 (OPTIONAL): Technical achievement with metrics",
+        "BULLET 5 (OPTIONAL): Optimization/automation with quantified results"
       ]
     }}
   ],
   "projects": [
     {{
       "title": "Project Name",
-      "technologies": "Full Tech Stack: React, Redux, Node.js, Express, MongoDB, Socket.io, AWS S3, Docker",
+      "technologies": "Full Tech Stack: 8-12 technologies listed",
       "duration": "Month Year - Month Year",
       "description": [
-        "Developed full-stack social platform using React, Redux, Node.js, Express, MongoDB, Socket.io, AWS S3, Docker, supporting 2,500+ users with real-time messaging and achieving 95% retention rate.",
-        "Implemented advanced caching with Redis and CDN integration, reducing page load times by 65% from 3.2s to 1.1s and improving SEO rankings by 40%."
+        "BULLET 1: [Action verb] [what was built - specific] [using full tech stack: 8-12 technologies] [achieving metric]. Example: 'Developed full-stack social platform using React, Redux, Node.js, Express, MongoDB, Socket.io, AWS S3, Docker, supporting 2,500+ users with real-time messaging, achieving 95% retention rate'",
+        "BULLET 2: [Action verb] [key technical feature] [implementation] [quantified improvement]. Example: 'Implemented advanced caching with Redis and CDN integration, reducing page load times by 65% from 3.2s to 1.1s, improving SEO rankings by 40%'",
+        "BULLET 3 (OPTIONAL): Additional feature or business impact"
       ],
       "github": "github.com/username/project",
       "demo": "project-demo.com"
     }}
   ],
   "certifications": [
-    "AWS Certified Solutions Architect (Amazon Web Services, 2025)",
-    "Google Data Analytics Professional Certificate (Google, 2025)",
-    "Certification Name (Issuing Organization, Year)"
+    "Certification Name (Issuing Organization, Year)",
+    "AWS Certified Solutions Architect (Amazon Web Services, {current_year})",
+    "Google Data Analytics Professional Certificate (Google, {current_year})"
   ],
   "achievements": [
-    "Won 1st Place MIT Hackathon 2025 among 200+ participants - Built AI code review tool using GPT-4 and Python, adopted by 500+ developers, reducing review time by 45%.",
-    "Open Source Contributor - Authored 125+ commits to TensorFlow and React repositories (100K+ GitHub stars) with 15 merged PRs improving performance.",
-    "Published ML optimization research paper in IEEE Conference, cited 50+ times."
+    "FORMAT: [Specific achievement] [quantified impact] [event/competition] [year]. Example: 'Won 1st Place MIT Hackathon {current_year} among 200+ participants - Built AI code review tool using GPT-4 and Python, adopted by 500+ developers, reducing review time by 45%'",
+    "Example: 'Open Source Contributor - Authored 125+ commits to TensorFlow and React repositories (100K+ GitHub stars) with 15 merged PRs improving performance'",
+    "Example: 'Published ML optimization research paper in IEEE Conference, cited 50+ times'"
   ]
 }}
-
 
 ═══════════════════════════════════════════════════════════════
 FINAL QUALITY ASSURANCE (100% Completion Required):
@@ -642,12 +623,12 @@ BEGIN GENERATION NOW."""
 def call_llm_api(prompt, api_key=None, api_provider="groq"):
     """Call various LLM APIs with enhanced error handling"""
     
-    DEFAULT_OPENROUTER_KEY = "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"
+    DEFAULT_GROQ_KEY = "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"
 
     providers = {
-        "openrouter": {
-            "url": "https://openrouter.ai/api/v1/chat/completions",
-            "env_var": "OPENROUTER_API_KEY",
+        "groq": {
+            "url": "https://api.groq.com/openai/v1/chat/completions",
+            "env_var": "GROQ_API_KEY",
             "model": "openai/gpt-oss-120b",
             "max_tokens": 4096
         },
@@ -666,60 +647,68 @@ def call_llm_api(prompt, api_key=None, api_provider="groq"):
     }
 
     providers_to_try = [api_provider] if api_provider in providers else []
-    providers_to_try.extend([p for p in ["openrouter", "together", "openai"] if p not in providers_to_try])
+    providers_to_try.extend([p for p in ["groq", "together", "openai"] if p not in providers_to_try])
 
     last_error = None
 
     for provider_name in providers_to_try:
         provider = providers[provider_name]
 
-    # Reset key per provider
-        current_key = api_key or os.environ.get(provider["env_var"])
-        if current_key is None and provider_name == "openrouter":
-            current_key = DEFAULT_OPENROUTER_KEY
+        if api_key is None:
+            api_key = os.environ.get(provider["env_var"])
+            if api_key is None and provider_name == "groq":
+                api_key = DEFAULT_GROQ_KEY
 
-        if not current_key:
-            st.warning(f"⚠️ No API key found for {provider_name}")
+        if not api_key:
+            st.warning(f"⚠️  No API key found for {provider_name}")
             continue
 
-       try:
-           st.info(f"🔄 Generating with {provider_name.upper()}...")
+        try:
+            st.info(f"🔄 Generating with {provider_name.upper()}...")
 
-           headers = {
-               "Authorization": f"Bearer {current_key}",
-               "Content-Type": "application/json"
-           }
+            headers = {
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json"
+            }
 
-        # optional throttling to prevent 429
-           elapsed = time.time() - last_request_time
-           if elapsed < 1 / MAX_REQUESTS_PER_SECOND:
-               time.sleep((1 / MAX_REQUESTS_PER_SECOND) - elapsed)
-           last_request_time = time.time()
-
-           payload = {
-               "model": provider["model"],
-               "messages": [
-                   {"role": "system", "content": "You are an expert ATS resume writer..."},
-                   {"role": "user", "content": prompt}
+            payload = {
+                "model": provider["model"],
+                "messages": [
+                    {
+                        "role": "system",
+                        "content": "You are an expert ATS resume writer and career coach. You create compelling, keyword-optimized resumes that pass ATS systems and impress recruiters. Always respond with valid JSON only. Focus on achievements, metrics, and impact."
+                    },
+                    {"role": "user", "content": prompt}
                 ],
                 "max_tokens": provider["max_tokens"],
                 "temperature": 0.8
             }
 
-            response = requests.post(provider["url"], headers=headers, json=payload, timeout=120)
+            response = requests.post(
+                provider["url"],
+                headers=headers,
+                json=payload,
+                timeout=120
+            )
+
+            if response.status_code != 200:
+                error_detail = response.text[:200]
+                raise Exception(f"HTTP {response.status_code}: {error_detail}")
+
             response.raise_for_status()
             result = response.json()
 
-            content = result.get("choices", [{}])[0].get("message", {}).get("content")
-            if content:
+            if "choices" in result and len(result["choices"]) > 0:
+                content = result["choices"][0]["message"]["content"]
                 st.success(f"✅ Resume generated with {provider_name.upper()}!")
                 return content
             else:
-                 raise Exception(f"Unexpected response format from {provider_name}")
+                raise Exception(f"Unexpected response format from {provider_name}")
 
         except Exception as e:
             last_error = str(e)
-            st.warning(f"⚠️ {provider_name} failed: {last_error[:100]}")
+            st.warning(f"⚠️  {provider_name} failed: {str(e)[:100]}")
+            api_key = None
             continue
 
     raise Exception(f"All API providers failed. Last error: {last_error}")
@@ -1056,8 +1045,8 @@ def extract_json_from_response(response_text):
     
     # Second try: Remove markdown code blocks
     try:
-        cleaned = re.sub(r'```json\s*','', response_text)
-        cleaned = re.sub(r'```\s*','', cleaned)
+        cleaned = re.sub(r'```json\s*', '', response_text)
+        cleaned = re.sub(r'```\s*, '', cleaned)
         cleaned = cleaned.strip()
         return json.loads(cleaned)
     except json.JSONDecodeError:
