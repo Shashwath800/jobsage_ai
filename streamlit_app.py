@@ -1191,8 +1191,7 @@ def main():
         st.warning("⏳ This may take 30-60 seconds for best quality...")
 
         try:
-    # Generate enhanced prompt
-    enhanced_prompt = ResumeTemplates.get_enhanced_prompt(user_input)
+            enhanced_prompt = ResumeTemplates.get_enhanced_prompt(user_input)
 
     # Call LLM API with retry logic
     MAX_RETRIES = 3
