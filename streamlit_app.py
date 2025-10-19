@@ -407,10 +407,40 @@ CRITICAL EXTRACTION & ANALYSIS:
     • Irrelevant details
 
 ═══════════════════════════════════════════════════════════════
+ONE-PAGE RESUME CONSTRAINT (CRITICAL):
+═══════════════════════════════════════════════════════════════
+
+TARGET LENGTH: EXACTLY ONE PAGE (A4 or US Letter)
+
+MANDATORY CONDENSING RULES:
+• TOTAL LENGTH: 550–650 words (max)
+• MAX 6 SECTIONS ONLY: Professional Summary, Technical Skills, Experience, Projects, Education, Certifications/Achievements
+• Professional Summary: 4 sentences (max 120 words)
+• Each job/project: 2–3 concise bullets (15–22 words each)
+• Limit total experience bullets: 8–10 total across all roles
+• Limit total projects: 2–3 high-impact ones only
+• Limit certifications/achievements: 3–4 total combined
+• Use compact, result-driven phrasing — remove redundant adjectives
+• Merge similar technologies into short stacks (e.g., “Python, Django, REST APIs”)
+• Do NOT include soft skills as a separate section — integrate them into bullets and summary
+• Ensure all sections visually fit on one page when exported to PDF (A4/Letter)
+• Prioritize metrics and keywords that improve ATS and recruiter scan (6-second readability)
+• Keep spacing minimal — no long paragraphs, no blank lines
+
+
+═══════════════════════════════════════════════════════════════
 JSON STRUCTURE - STRICT COMPLIANCE:
 ═══════════════════════════════════════════════════════════════
 
 Return ONLY valid JSON with this exact structure:
+"page_formatting": {
+  "target_length": "One Page (A4/Letter)",
+  "word_count_range": "550-650",
+  "section_limit": 6,
+  "max_bullets_per_section": 3,
+  "compression_strategy": "Prioritize metrics and ATS keywords; remove redundancy while maintaining impact"
+},
+
 
 {{
   "contact": {{
