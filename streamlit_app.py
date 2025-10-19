@@ -209,7 +209,7 @@ class ATSKeywordExtractor:
 class ResumeTemplates:
     @staticmethod
     def get_enhanced_prompt(user_input):
-        """Generate ultra-optimized prompt for comprehensive ATS-friendly resumes"""
+        """Generate ultra-optimized prompt for comprehensive ATS-friendly resumes with ATTRACTIVE summary"""
         current_year = datetime.now().year
         keywords = ATSKeywordExtractor.get_industry_keywords(user_input)
         
@@ -247,22 +247,43 @@ CRITICAL EXTRACTION & ANALYSIS:
    • Recent = Relevant: Emphasize recent experience
    • Problem-Solution-Impact: Each bullet shows challenge → action → result
 
-4. PROFESSIONAL SUMMARY (40% of ATS Score):
+4. PROFESSIONAL SUMMARY (40% of ATS Score) - MUST BE COMPELLING & MAGNETIC:
    
-   EXACT 4-5 sentence structure:
+   CRITICAL: This summary must make recruiters STOP and READ. Use power words, achievements, and create urgency.
    
-   Sentence 1: "[Job Title] with [X+] years of [core specialty], specializing in [2-3 key technologies from input]"
-   Sentence 2: "Proven track record of [achievement 1 with metric] and [achievement 2 with metric], resulting in [business impact]"
-   Sentence 3: "Expert in [5-6 technical skills]: {', '.join(keywords['technical'][:6])}"
-   Sentence 4: "Strong [2-3 soft skills]: {', '.join(keywords['soft_skills'][:3])}, with experience in [methodology]"
-   Sentence 5: "Seeking to leverage [unique value] to drive [business outcome] at [company type]"
+   EXACT 4-5 sentence structure with IMPACT-DRIVEN language:
    
-   Requirements:
-   • Keyword Density: 12-15 keywords in 120-150 words
-   • Tone: Confident, achievement-driven, metric-heavy
-   • Must Include: Role 2x, years, 3 metrics, 6 technical skills, 2 soft skills
+   Sentence 1: "[DYNAMIC descriptor] [Job Title] with [X+] years of [impressive achievement], specializing in [2-3 cutting-edge technologies]"
+      • Use descriptors: "Results-driven", "Award-winning", "Innovative", "High-performing", "Strategic"
+      • Add flair: "passionate about", "excels at", "dedicated to"
    
-   EXAMPLE: "Senior Full-Stack Developer with 5+ years architecting enterprise web applications using React, Node.js, and PostgreSQL. Delivered 40% performance improvement through Redis caching and increased user retention by 35% via personalized UX features, generating $3M additional revenue. Expert in JavaScript/TypeScript, Python, AWS, Docker, GraphQL, and microservices architecture. Strong problem-solving, technical leadership, and agile collaboration skills with Scrum Master certification. Seeking to leverage expertise in scalable system design to drive digital transformation at innovative fintech company."
+   Sentence 2: "Proven track record of [IMPRESSIVE achievement with BIG metric] and [IMPACTFUL achievement], resulting in [BUSINESS VALUE in $, %, or scale]"
+      • Focus on: Revenue growth, cost savings, user scale, performance gains
+      • Use powerful verbs: "Spearheaded", "Pioneered", "Orchestrated", "Transformed"
+   
+   Sentence 3: "Deep expertise in [5-6 technical skills with modern context]: {', '.join(keywords['technical'][:6])}, driving [business outcome]"
+      • Connect tech to business value
+      • Use phrases: "leveraging cutting-edge", "mastering", "expert-level proficiency"
+   
+   Sentence 4: "Recognized for [standout quality] with exceptional [2-3 soft skills]: {', '.join(keywords['soft_skills'][:3])}, consistently [impressive outcome]"
+      • Highlight uniqueness
+      • Use: "renowned for", "celebrated for", "distinguished by"
+   
+   Sentence 5: "Eager to leverage [unique value proposition] to [ambitious goal] at [inspiring company descriptor], driving [transformation/growth/innovation]"
+      • Forward-looking and aspirational
+      • Show ambition and cultural fit
+   
+   TONE: Confident, achievement-obsessed, energetic, forward-thinking
+   KEYWORDS: 12-15 technical + soft skill keywords in 130-160 words
+   IMPACT: Must include minimum 3 quantified achievements with impressive metrics
+   
+   STELLAR EXAMPLES (Study these patterns):
+   
+   ✨ "Award-winning Senior Full-Stack Engineer with 5+ years architecting enterprise-grade applications, passionate about leveraging React, Node.js, and AWS to build transformative digital experiences. Spearheaded platform redesign that skyrocketed user engagement by 156% and generated $4.2M in additional annual revenue, while reducing infrastructure costs by 40% through innovative cloud optimization. Deep expertise in JavaScript/TypeScript, Python, microservices architecture, GraphQL, Docker, and CI/CD automation, consistently delivering solutions 30% ahead of schedule. Renowned for exceptional technical leadership, cross-functional collaboration, and mentoring abilities, having guided 12 junior developers to senior roles. Eager to bring this passion for innovation and proven track record of driving 10x improvements to a visionary tech company pioneering the future of scalable, user-centric platforms."
+   
+   ✨ "High-impact Data Scientist with 4+ years transforming complex data into strategic insights, specializing in Machine Learning, Deep Learning, and predictive analytics that drive multi-million dollar business decisions. Pioneered AI-powered recommendation engine using TensorFlow and PyTorch, boosting conversion rates by 89% and delivering $6.8M revenue uplift while reducing customer churn by 34%. Expert-level proficiency in Python, R, SQL, Apache Spark, Tableau, and statistical modeling, with proven ability to translate technical complexity into executive-level strategy. Celebrated for analytical rigor, compelling data storytelling, and strategic thinking, having presented insights to C-suite executives at Fortune 500 companies. Seeking to leverage this unique blend of technical excellence and business acumen to revolutionize data-driven decision making at an innovative company pushing the boundaries of AI and analytics."
+   
+   ✨ "Strategic Digital Marketing Leader with 6+ years orchestrating multi-channel campaigns that consistently exceed ROI targets by 200%+, mastering SEO, SEM, content strategy, and marketing automation to build brands and drive exponential growth. Transformed underperforming marketing operations into industry-leading performance, achieving 312% increase in qualified leads and $8.5M pipeline growth through data-driven optimization of Google Ads, Facebook campaigns, and email marketing funnels. Deep expertise in Google Analytics, HubSpot, Salesforce, A/B testing, and marketing automation, coupled with creative excellence and strategic vision. Distinguished by exceptional stakeholder management, cross-functional leadership, and agile adaptability, having successfully launched 45+ campaigns across 12 markets. Excited to bring this track record of driving measurable impact and innovation to a forward-thinking company ready to dominate their market through cutting-edge digital strategies."
 
 5. ATS PARSING OPTIMIZATION (30% of ATS Score):
    • EXACT headers: "Professional Summary", "Technical Skills", "Professional Experience", "Projects", "Education", "Certifications", "Achievements"
@@ -401,7 +422,7 @@ Return ONLY valid JSON with this exact structure:
     "github": "github.com/username",
     "portfolio": "www.portfolio.com"
   }},
-  "professional_summary": "MUST BE 4-5 SENTENCES, 120-150 WORDS. Follow structure: [Job Title] with [X] years → [2 achievements with metrics] → [6 technical skills] → [2 soft skills + methodology] → [career goal]. INCLUDE 12-15 KEYWORDS FROM: {', '.join(keywords['technical'][:8])}, {', '.join(keywords['soft_skills'][:4])}",
+  "professional_summary": "MUST BE 4-5 COMPELLING SENTENCES, 130-160 WORDS, MAGNETIC AND ACHIEVEMENT-FOCUSED. Follow enhanced structure with power words. START with dynamic descriptor (Results-driven/Award-winning/Innovative). Include [impressive role] + [years] + [specialization] → [2 MAJOR achievements with BIG metrics] → [6 technical skills with context] → [recognized qualities + soft skills] → [ambitious career goal]. MINIMUM 3 quantified achievements. Use words like: spearheaded, pioneered, transformed, orchestrated, renowned, celebrated. INCLUDE 12-15 KEYWORDS FROM: {', '.join(keywords['technical'][:8])}, {', '.join(keywords['soft_skills'][:4])}. Make recruiters STOP and READ.",
   "education": [
     {{
       "degree": "Full degree name (Bachelor of Science in Computer Science)",
@@ -466,7 +487,7 @@ FINAL QUALITY ASSURANCE (100% Completion Required):
 ═══════════════════════════════════════════════════════════════
 
 ATS Optimization (Must Score 90%+):
-✓ Professional summary: 12-15 keywords and 3+ metrics
+✓ Professional summary: 12-15 keywords and 3+ metrics with MAGNETIC appeal
 ✓ Standard section headers (no creative variations)
 ✓ Top 10 keywords appear 3-4x across sections
 ✓ Both acronyms and full forms (ML + Machine Learning)
@@ -474,7 +495,7 @@ ATS Optimization (Must Score 90%+):
 ✓ Keywords front-loaded in first 3-5 words
 
 Recruiter Appeal (6-Second Test):
-✓ Professional summary compelling and shows value
+✓ Professional summary STOPS recruiters and compels them to read (use power words)
 ✓ Every bullet starts with power action verb
 ✓ Each bullet has quantifiable metrics (%, $, numbers)
 ✓ Shows progression and increasing responsibility
@@ -496,7 +517,7 @@ Achievement Formula (CAR Method):
 ✓ Each bullet: 15-25 words, verb + tech + metric + impact
 
 Keyword Density Targets:
-• Professional Summary: 12-15 keywords in 120-150 words (10%)
+• Professional Summary: 12-15 keywords in 130-160 words with compelling narrative
 • Experience bullets: 3-5 keywords per bullet
 • Projects: 8-12 technologies per project
 • Skills section: 25-40 total skills across 5-6 categories
@@ -515,10 +536,11 @@ IMPORTANT: If user mentions ANY detail, it MUST appear in resume. Transform vagu
 
 TARGET: Generate resume optimized for {current_year} that:
 • Passes ATS with 90%+ match score
-• Captures recruiter attention in 6 seconds
+• Captures recruiter attention in 6 seconds with MAGNETIC summary
 • Demonstrates clear value proposition
 • Shows technical depth AND business impact
 • Makes candidate stand out from 200+ applicants
+• Professional summary makes recruiters STOP and READ
 
 Return ONLY valid JSON. No explanations, no comments, just JSON structure.
 
@@ -659,7 +681,7 @@ def call_llm_api(prompt, api_key=None, api_provider="groq"):
                     {"role": "user", "content": prompt}
                 ],
                 "max_tokens": provider["max_tokens"],
-                "temperature": 0.8  # Slightly higher for more creative summaries
+                "temperature": 0.8
             }
 
             response = requests.post(
@@ -1024,7 +1046,7 @@ def extract_json_from_response(response_text):
     # Second try: Remove markdown code blocks
     try:
         cleaned = re.sub(r'```json\s*', '', response_text)
-        cleaned = re.sub(r'```\s*$', '', cleaned)
+        cleaned = re.sub(r'```\s*, '', cleaned)
         cleaned = cleaned.strip()
         return json.loads(cleaned)
     except json.JSONDecodeError:
@@ -1193,30 +1215,30 @@ def main():
         try:
             enhanced_prompt = ResumeTemplates.get_enhanced_prompt(user_input)
 
-    # Call LLM API with retry logic
-    MAX_RETRIES = 3
-    retry_count = 0
-    resume_data = None
+            # Call LLM API with retry logic
+            MAX_RETRIES = 3
+            retry_count = 0
+            resume_data = None
 
-    while retry_count < MAX_RETRIES and resume_data is None:
-        try:
-            with st.spinner(f"🎯 Attempt {retry_count + 1}/{MAX_RETRIES}: Generating resume..."):
-                llm_response = call_llm_api(enhanced_prompt)
-                st.info("📊 Parsing resume data...")
-                resume_data = extract_json_from_response(llm_response)
-                break  # Success!
-        except Exception as e:
-            retry_count += 1
-            if retry_count < MAX_RETRIES:
-                st.warning(f"⚠️ Attempt {retry_count} failed. Retrying...")
-                import time
-                time.sleep(2)
-            else:
-                st.error(f"❌ All {MAX_RETRIES} attempts failed: {str(e)}")
-                raise
-    
-    if resume_data is None:
-        raise Exception("Failed to generate valid resume data after all retries")
+            while retry_count < MAX_RETRIES and resume_data is None:
+                try:
+                    with st.spinner(f"🎯 Attempt {retry_count + 1}/{MAX_RETRIES}: Generating resume..."):
+                        llm_response = call_llm_api(enhanced_prompt)
+                        st.info("📊 Parsing resume data...")
+                        resume_data = extract_json_from_response(llm_response)
+                        break  # Success!
+                except Exception as e:
+                    retry_count += 1
+                    if retry_count < MAX_RETRIES:
+                        st.warning(f"⚠️ Attempt {retry_count} failed. Retrying...")
+                        import time
+                        time.sleep(2)
+                    else:
+                        st.error(f"❌ All {MAX_RETRIES} attempts failed: {str(e)}")
+                        raise
+            
+            if resume_data is None:
+                raise Exception("Failed to generate valid resume data after all retries")
 
             # Validate professional summary
             summary = resume_data.get('professional_summary', '')
