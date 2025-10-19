@@ -671,57 +671,56 @@ def call_llm_api(prompt, api_key=None, api_provider="groq"):
     last_error = None
 
     for provider_name in providers_to_try:
-    provider = providers[provider_name]
+        provider = providers[provider_name]
 
     # Reset key per provider
-    current_key = api_key or os.environ.get(provider["env_var"])
-    if current_key is None and provider_name == "openrouter":
-        current_key = DEFAULT_OPENROUTER_KEY
+        current_key = api_key or os.environ.get(provider["env_var"])
+        if current_key is None and provider_name == "openrouter":
+            current_key = DEFAULT_OPENROUTER_KEY
 
-    if not current_key:
-        st.warning(f"⚠️ No API key found for {provider_name}")
-        continue
+        if not current_key:
+            st.warning(f"⚠️ No API key found for {provider_name}")
+            continue
 
-    try:
-        st.info(f"🔄 Generating with {provider_name.upper()}...")
+       try:
+           st.info(f"🔄 Generating with {provider_name.upper()}...")
 
-        headers = {
-            "Authorization": f"Bearer {current_key}",
-            "Content-Type": "application/json"
-        }
+           headers = {
+               "Authorization": f"Bearer {current_key}",
+               "Content-Type": "application/json"
+           }
 
         # optional throttling to prevent 429
-        elapsed = time.time() - last_request_time
-        if elapsed < 1 / MAX_REQUESTS_PER_SECOND:
-            time.sleep((1 / MAX_REQUESTS_PER_SECOND) - elapsed)
-        last_request_time = time.time()
+           elapsed = time.time() - last_request_time
+           if elapsed < 1 / MAX_REQUESTS_PER_SECOND:
+               time.sleep((1 / MAX_REQUESTS_PER_SECOND) - elapsed)
+           last_request_time = time.time()
 
-        payload = {
-            "model": provider["model"],
-            "messages": [
-                {"role": "system", "content": "You are an expert ATS resume writer..."},
-                {"role": "user", "content": prompt}
-            ],
-            "max_tokens": provider["max_tokens"],
-            "temperature": 0.8
-        }
+           payload = {
+               "model": provider["model"],
+               "messages": [
+                   {"role": "system", "content": "You are an expert ATS resume writer..."},
+                   {"role": "user", "content": prompt}
+                ],
+                "max_tokens": provider["max_tokens"],
+                "temperature": 0.8
+            }
 
-        response = requests.post(provider["url"], headers=headers, json=payload, timeout=120)
-        response.raise_for_status()
-        result = response.json()
+            response = requests.post(provider["url"], headers=headers, json=payload, timeout=120)
+            response.raise_for_status()
+            result = response.json()
 
-        content = result.get("choices", [{}])[0].get("message", {}).get("content")
-        if content:
-            st.success(f"✅ Resume generated with {provider_name.upper()}!")
-            return content
-        else:
-            raise Exception(f"Unexpected response format from {provider_name}")
+            content = result.get("choices", [{}])[0].get("message", {}).get("content")
+            if content:
+                st.success(f"✅ Resume generated with {provider_name.upper()}!")
+                return content
+            else:
+                 raise Exception(f"Unexpected response format from {provider_name}")
 
-    except Exception as e:
-        last_error = str(e)
-        st.warning(f"⚠️ {provider_name} failed: {last_error[:100]}")
-        continue
-
+        except Exception as e:
+            last_error = str(e)
+            st.warning(f"⚠️ {provider_name} failed: {last_error[:100]}")
+            continue
 
     raise Exception(f"All API providers failed. Last error: {last_error}")
 
