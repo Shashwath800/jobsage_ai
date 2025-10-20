@@ -743,7 +743,7 @@ def call_llm_api(prompt, api_key=None, api_provider="groq"):
 
     providers = {
         "sambanova": {
-            "url": "https://api.sambanova.ai/v1",
+            "url": "https://api.sambanova.ai/v1/chat/completions",
             "env_var": "SAMBANOVA_API_KEY",
             "model": "gpt-oss-120b",
             "max_tokens": 4096
