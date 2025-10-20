@@ -745,7 +745,7 @@ def call_llm_api(prompt, api_key=None, api_provider="groq"):
         "groq": {
             "url": "https://api.sambanova.ai/v1",
             "env_var": "GROQ_API_KEY",
-            "model": "openai/gpt-oss-120b",
+            "model": "gpt-oss-120b",
             "max_tokens": 4096
         },
         "together": {
