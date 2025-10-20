@@ -739,12 +739,12 @@ Return ONLY valid JSON with NO extra text, comments, or explanations."""
 def call_llm_api(prompt, api_key=None, api_provider="groq"):
     """Call various LLM APIs with enhanced error handling"""
     
-    DEFAULT_GROQ_KEY = "c6efb374-c623-43ab-b202-1a5707a0ae02"
+    DEFAULT_SAMBANOVA_KEY = "c6efb374-c623-43ab-b202-1a5707a0ae02"
 
     providers = {
-        "groq": {
+        "sambanova": {
             "url": "https://api.sambanova.ai/v1",
-            "env_var": "GROQ_API_KEY",
+            "env_var": "SAMBANOVA_API_KEY",
             "model": "gpt-oss-120b",
             "max_tokens": 4096
         },
@@ -763,7 +763,7 @@ def call_llm_api(prompt, api_key=None, api_provider="groq"):
     }
 
     providers_to_try = [api_provider] if api_provider in providers else []
-    providers_to_try.extend([p for p in ["groq", "together", "openai"] if p not in providers_to_try])
+    providers_to_try.extend([p for p in ["sambanova", "together", "openai"] if p not in providers_to_try])
 
     last_error = None
 
@@ -772,8 +772,8 @@ def call_llm_api(prompt, api_key=None, api_provider="groq"):
 
         if api_key is None:
             api_key = os.environ.get(provider["env_var"])
-            if api_key is None and provider_name == "groq":
-                api_key = DEFAULT_GROQ_KEY
+            if api_key is None and provider_name == "sambanova":
+                api_key = DEFAULT_SAMBANOVA_KEY
 
         if not api_key:
             st.warning(f"⚠️  No API key found for {provider_name}")
