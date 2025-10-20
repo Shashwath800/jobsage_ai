@@ -739,11 +739,11 @@ Return ONLY valid JSON with NO extra text, comments, or explanations."""
 def call_llm_api(prompt, api_key=None, api_provider="groq"):
     """Call various LLM APIs with enhanced error handling"""
     
-    DEFAULT_GROQ_KEY = "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"
+    DEFAULT_GROQ_KEY = "c6efb374-c623-43ab-b202-1a5707a0ae02"
 
     providers = {
         "groq": {
-            "url": "https://api.groq.com/openai/v1/chat/completions",
+            "url": "https://api.sambanova.ai/v1",
             "env_var": "GROQ_API_KEY",
             "model": "openai/gpt-oss-120b",
             "max_tokens": 4096
