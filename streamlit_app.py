@@ -739,7 +739,7 @@ Return ONLY valid JSON with NO extra text, comments, or explanations."""
 def call_llm_api(prompt, api_key=None, api_provider="groq"):
     """Call various LLM APIs with enhanced error handling"""
     
-    DEFAULT_SAMBANOVA_KEY = "c6efb374-c623-43ab-b202-1a5707a0ae02"
+    DEFAULT_SAMBANOVA_KEY = "3dc3c491-f4db-4905-bc1d-ddf941a42bb3"
 
     providers = {
         "sambanova": {
